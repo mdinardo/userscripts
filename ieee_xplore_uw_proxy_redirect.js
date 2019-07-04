@@ -1,30 +1,16 @@
 // ==UserScript==
 // @name     Redirect IEEE Transactions to UW Library Proxy
-// @version 0.1
+// @version 0.2
 // @author Matthew Di Nardo
+// @updateURL https://raw.githubusercontent.com/mdinardo/userscripts/master/ieee_xplore_uw_proxy_redirect.js
+// @downloadURL https://raw.githubusercontent.com/mdinardo/userscripts/master/ieee_xplore_uw_proxy_redirect.js
 // @match    *://ieeexplore.ieee.org/*
 // @run-at   document-start
 // @grant    none
 // ==/UserScript==
 
-
 (function() {
     'use strict';
-
-    var newHost = "ieeexplore-ieee-org.proxy.lib.uwaterloo.ca";
-    var newURL = location.protocol + "//" +
-        newHost +
-        (location.pathname || "") +
-        (location.search || "") +
-        (location.hash || "")
-    ;
-
-    //console.log("IEEE Redirect: ");
-    //console.log(location);
-    //console.log("IEEE Redirect: New URL:     " + newURL);
-
+    var newURL = location.href.replace(/ieeexplore.ieee.org/, newHost);
     location.replace (newURL);
 })();
-
-
-
